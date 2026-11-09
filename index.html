@@ -3,20 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>鹰眼通繁简体切换 · 软件下载中心</title>
+<title>鹰眼通 HawkSight · 软件下载中心</title>
 <style>
     :root {
-        /* 柔和的高级暗黑背景 */
         --bg: #0a0b0e;
         --surface: #14161a;
         --surface-hover: #1a1d23;
         --border: #2a2e37;
-        
-        /* 文字颜色 */
         --text: #e2e8f0;
         --dim: #8b949e;
-        
-        /* 高级青绿/薄荷色 */
         --hawk-cyan: #00e5ff;
         --hawk-green: #20e3b2;
         --glow-cyan: rgba(0, 229, 255, 0.2);
@@ -134,7 +129,6 @@
         opacity: 0.9;
     }
 
-    /* 右侧控制区 */
     .header-controls {
         display: flex;
         align-items: center;
@@ -169,7 +163,6 @@
         50% { opacity: 0.3; }
     }
 
-    /* 繁简切换按钮 */
     .lang-toggle {
         cursor: pointer;
         display: flex;
@@ -192,7 +185,7 @@
         border-color: rgba(0, 229, 255, 0.4);
     }
 
-    /* ============ 主视觉区 (Hero) ============ */
+    /* ============ 主视觉区 ============ */
     .hero {
         text-align: center;
         padding: 80px 20px 60px;
@@ -299,13 +292,8 @@
         background-color: var(--surface-hover);
     }
 
-    .app-card.is-free {
-        border-color: rgba(32, 227, 178, 0.15);
-    }
-
-    .app-card.is-vip {
-        border-color: rgba(0, 229, 255, 0.15);
-    }
+    .app-card.is-free { border-color: rgba(32, 227, 178, 0.15); }
+    .app-card.is-vip { border-color: rgba(0, 229, 255, 0.15); }
 
     .status-badge {
         position: absolute;
@@ -500,7 +488,6 @@
         font-weight: 700;
     }
 
-    /* 呼吸灯特效 */
     @keyframes pulseGlowGreen {
         0% { box-shadow: 0 0 0 0 rgba(32, 227, 178, 0.3); }
         70% { box-shadow: 0 0 0 8px rgba(32, 227, 178, 0); }
@@ -512,30 +499,15 @@
         100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
     }
 
-    /* ============ 响应式 ============ */
     @media (max-width: 720px) {
         .header { padding: 12px 16px; }
-        
-        /* 手机端隐藏状态栏以节省空间 */
         .sys-status { display: none; }
-        
         .hero { padding: 60px 16px 40px; }
         .hero h1 { letter-spacing: 0.1em; margin-bottom: 12px; }
         .hero p { letter-spacing: 0.2em; font-size: 11px; }
-        
-        .container {
-            grid-template-columns: 1fr;
-            padding: 0 16px 30px;
-            gap: 16px;
-        }
-        
+        .container { grid-template-columns: 1fr; padding: 0 16px 30px; gap: 16px; }
         .app-card { padding: 24px 20px; }
-        
-        .floating-tg {
-            right: 16px;
-            bottom: 16px;
-            padding: 10px 16px;
-        }
+        .floating-tg { right: 16px; bottom: 16px; padding: 10px 16px; }
     }
 </style>
 </head>
@@ -546,17 +518,17 @@
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
         </svg>
-        <span class="lang" data-s="在线客服" data-t="在線客服">在线客服</span>
+        <span class="lang" data-s="在线客服" data-t="在線客服">在線客服</span>
     </a>
 
     <!-- 顶部导航 -->
     <header class="header">
         <div class="logo">
             <div class="logo-img-wrap">
-                <img src="https://i.ibb.co/xSSMz42H/A92-DABFE-5048-46-E6-A4-D9-38-B7-CBF779-C8.png" alt="鹰眼通 Logo" class="custom-logo">
+                <img src="https://i.ibb.co/xSSMz42H/A92-DABFE-5048-46-E6-A4-D9-38-B7-CBF779-C8.png" alt="鷹眼通 Logo" class="custom-logo">
             </div>
             <div class="logo-text-group">
-                <span class="logo-cn lang" data-s="鹰眼通" data-t="鷹眼通">鹰眼通</span>
+                <span class="logo-cn lang" data-s="鹰眼通" data-t="鷹眼通">鷹眼通</span>
                 <span class="logo-en">HAWKSIGHT</span>
             </div>
         </div>
@@ -566,8 +538,8 @@
                 <span class="dot"></span>
                 SYSTEM ONLINE
             </div>
-            <!-- 繁简切换按钮 -->
-            <div class="lang-toggle" id="langToggle">繁體</div>
+            <!-- 繁简切换按钮，默认显示“简体” -->
+            <div class="lang-toggle" id="langToggle">简体</div>
         </div>
     </header>
 
@@ -583,8 +555,8 @@
         </div>
 
         <h1>
-            <span class="lang" data-s="鹰眼洞察" data-t="鷹眼洞察">鹰眼洞察</span><br>
-            <span class="lang" data-s="锁定全局" data-t="鎖定全局">锁定全局</span>
+            <span class="lang" data-s="鹰眼洞察" data-t="鷹眼洞察">鷹眼洞察</span><br>
+            <span class="lang" data-s="锁定全局" data-t="鎖定全局">鎖定全局</span>
         </h1>
         <p>HAWKSIGHT · PREDICTION MATRIX</p>
     </section>
@@ -604,22 +576,22 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智算大底" data-t="鷹眼通 · 智算大底">鹰眼通 · 智算大底</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智算大底" data-t="鷹眼通 · 智算大底">鷹眼通 · 智算大底</span></div>
                     <div class="app-sub">HAWK QUANT BASE</div>
                 </div>
             </div>
             <div class="app-desc lang" data-s="全息量化推演终端。搭载高维算法矩阵交叉验证，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。" data-t="全息量化推演終端。搭載高維算法矩陣交叉驗證，深度追蹤冷熱遺漏，推演高概率大底與精準趨勢預測模型。">
-                全息量化推演终端。搭载高维算法矩阵交叉验证，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。
+                全息量化推演終端。搭載高維算法矩陣交叉驗證，深度追蹤冷熱遺漏，推演高概率大底與精準趨勢預測模型。
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="AI 矩阵" data-t="AI 矩陣">AI 矩阵</span>
-                <span class="tag lang" data-s="趋势共振" data-t="趨勢共振">趋势共振</span>
-                <span class="tag lang" data-s="免费使用" data-t="免費使用">免费使用</span>
+                <span class="tag lang" data-s="AI 矩阵" data-t="AI 矩陣">AI 矩陣</span>
+                <span class="tag lang" data-s="趋势共振" data-t="趨勢共振">趨勢共振</span>
+                <span class="tag lang" data-s="免费使用" data-t="免費使用">免費使用</span>
             </div>
             <div class="download-group">
                 <a href="#" class="btn-dl btn-free">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免费一键下载</span>
+                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免費一鍵下載</span>
                 </a>
             </div>
         </div>
@@ -636,22 +608,22 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 挑码助手" data-t="鷹眼通 · 挑碼助手">鹰眼通 · 挑码助手</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 挑码助手" data-t="鷹眼通 · 挑碼助手">鷹眼通 · 挑碼助手</span></div>
                     <div class="app-sub">CODE SCOUT</div>
                 </div>
             </div>
             <div class="app-desc lang" data-s="专为实战打造的辅助筛选工具。结合矩阵数据与自定义指标，帮您快速在海量号码中精准圈定目标，一键生成。" data-t="專為實戰打造的輔助篩選工具。結合矩陣數據與自定義指標，幫您快速在海量號碼中精準圈定目標，一鍵生成。">
-                专为实战打造的辅助筛选工具。结合矩阵数据与自定义指标，帮您快速在海量号码中精准圈定目标，一键生成。
+                專為實戰打造的輔助篩選工具。結合矩陣數據與自定義指標，幫您快速在海量號碼中精準圈定目標，一鍵生成。
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="一键挑码" data-t="一鍵挑碼">一键挑码</span>
-                <span class="tag lang" data-s="条件过滤" data-t="條件過濾">条件过滤</span>
-                <span class="tag lang" data-s="无限制使用" data-t="無限制使用">无限制使用</span>
+                <span class="tag lang" data-s="一键挑码" data-t="一鍵挑碼">一鍵挑碼</span>
+                <span class="tag lang" data-s="条件过滤" data-t="條件過濾">條件過濾</span>
+                <span class="tag lang" data-s="无限制使用" data-t="無限制使用">無限制使用</span>
             </div>
             <div class="download-group">
                 <a href="#" class="btn-dl btn-free">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免费一键下载</span>
+                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免費一鍵下載</span>
                 </a>
             </div>
         </div>
@@ -668,17 +640,17 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 新澳智选库" data-t="鷹眼通 · 新澳智選庫">鹰眼通 · 新澳智选库</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 新澳智选库" data-t="鷹眼通 · 新澳智選庫">鷹眼通 · 新澳智選庫</span></div>
                     <div class="app-sub">SMART LIBRARY</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="全息量化大数据中心。整合全网多维历史数据源，提供超长周期的真实预测资料与逻辑溯源。" data-t="全息量化大數據中心。整合全網多維歷史數據源，提供超長週期的真實預測資料與邏輯溯源。">全息量化大数据中心。整合全网多维历史数据源，提供超长周期的真实预测资料与逻辑溯源。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础资料免费看，解锁高级库需 VIP。" data-t="* 基礎資料免費看，解鎖高級庫需 VIP。">* 基础资料免费看，解锁高级库需 VIP。</span>
+                <span class="lang" data-s="全息量化大数据中心。整合全网多维历史数据源，提供超长周期的真实预测资料与逻辑溯源。" data-t="全息量化大數據中心。整合全網多維歷史數據源，提供超長週期的真實預測資料與邏輯溯源。">全息量化大數據中心。整合全網多維歷史數據源，提供超長週期的真實預測資料與邏輯溯源。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础资料免费看，解锁高级库需 VIP。" data-t="* 基礎資料免費看，解鎖高級庫需 VIP。">* 基礎資料免費看，解鎖高級庫需 VIP。</span>
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="海量数据" data-t="海量數據">海量数据</span>
-                <span class="tag lang" data-s="长期溯源" data-t="長期溯源">长期溯源</span>
+                <span class="tag lang" data-s="海量数据" data-t="海量數據">海量數據</span>
+                <span class="tag lang" data-s="长期溯源" data-t="長期溯源">長期溯源</span>
             </div>
             <div class="download-group">
                 <a href="#" class="btn-dl android-btn">
@@ -687,7 +659,7 @@
                 </a>
                 <a href="#" class="btn-dl pc-btn">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
-                    <span class="lang" data-s="电脑版" data-t="電腦版">电脑版</span>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
@@ -705,17 +677,17 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智能剥离" data-t="鷹眼通 · 智能剝離">鹰眼通 · 智能剥离</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智能剥离" data-t="鷹眼通 · 智能剝離">鷹眼通 · 智能剝離</span></div>
                     <div class="app-sub">SMART STRIP</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="专为杀号打造的防守端核心。内置动态冷却防死循环机制，多维度执行高危剥离，剔除死号。" data-t="專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度執行高危剝離，剔除死號。">专为杀号打造的防守端核心。内置动态冷却防死循环机制，多维度执行高危剥离，剔除死号。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 每日免费体验杀号，解锁三轨交集需 VIP。" data-t="* 每日免費體驗殺號，解鎖三軌交集需 VIP。">* 每日免费体验杀号，解锁三轨交集需 VIP。</span>
+                <span class="lang" data-s="专为杀号打造的防守端核心。内置动态冷却防死循环机制，多维度执行高危剥离，剔除死号。" data-t="專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度執行高危剝離，剔除死號。">專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度執行高危剝離，剔除死號。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 每日免费体验杀号，解锁三轨交集需 VIP。" data-t="* 每日免費體驗殺號，解鎖三軌交集需 VIP。">* 每日免費體驗殺號，解鎖三軌交集需 VIP。</span>
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="极寒剥离" data-t="極寒剝離">极寒剥离</span>
-                <span class="tag lang" data-s="动态防重" data-t="動態防重">动态防重</span>
+                <span class="tag lang" data-s="极寒剥离" data-t="極寒剝離">極寒剝離</span>
+                <span class="tag lang" data-s="动态防重" data-t="動態防重">動態防重</span>
             </div>
             <div class="download-group">
                 <a href="#" class="btn-dl android-btn">
@@ -724,7 +696,7 @@
                 </a>
                 <a href="#" class="btn-dl pc-btn">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
-                    <span class="lang" data-s="电脑版" data-t="電腦版">电脑版</span>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
@@ -741,17 +713,17 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 玄学杀号器" data-t="鷹眼通 · 玄學殺號器">鹰眼通 · 玄学杀号器</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 玄学杀号器" data-t="鷹眼通 · 玄學殺號器">鷹眼通 · 玄學殺號器</span></div>
                     <div class="app-sub">MYSTIC KILLER</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="基于高维时空共振的排雷终端。结合江恩螺旋与洛书飞星，多图交叉锁定「共振盲区」。" data-t="基於高維時空共振的排雷終端。結合江恩螺旋與洛書飛星，多圖交叉鎖定「共振盲區」。">基于高维时空共振的排雷终端。结合江恩螺旋与洛书飞星，多图交叉锁定「共振盲区」。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础杀号免费，解锁特码专属防御需 VIP。" data-t="* 基礎殺號免費，解鎖特碼專屬防禦需 VIP。">* 基础杀号免费，解锁特码专属防御需 VIP。</span>
+                <span class="lang" data-s="基于高维时空共振的排雷终端。结合江恩螺旋与洛书飞星，多图交叉锁定「共振盲区」。" data-t="基於高維時空共振的排雷終端。結合江恩螺旋與洛書飛星，多圖交叉鎖定「共振盲區」。">基於高維時空共振的排雷終端。結合江恩螺旋與洛書飛星，多圖交叉鎖定「共振盲區」。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础杀号免费，解锁特码专属防御需 VIP。" data-t="* 基礎殺號免費，解鎖特碼專屬防禦需 VIP。">* 基礎殺號免費，解鎖特碼專屬防禦需 VIP。</span>
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="洛书共振" data-t="洛書共振">洛书共振</span>
-                <span class="tag lang" data-s="特码专属" data-t="特碼專屬">特码专属</span>
+                <span class="tag lang" data-s="洛书共振" data-t="洛書共振">洛書共振</span>
+                <span class="tag lang" data-s="特码专属" data-t="特碼專屬">特碼專屬</span>
             </div>
             <div class="download-group">
                 <a href="#" class="btn-dl android-btn">
@@ -760,7 +732,7 @@
                 </a>
                 <a href="#" class="btn-dl pc-btn">
                     <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
-                    <span class="lang" data-s="电脑版" data-t="電腦版">电脑版</span>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
@@ -769,15 +741,14 @@
 
     <!-- 底部声明 -->
     <footer class="footer">
-        <p>© 2024 <span class="lang" data-s="鹰眼通" data-t="鷹眼通">鹰眼通</span> HAWKSIGHT DATA INTELLIGENCE CENTER. All Rights Reserved.</p>
+        <p>© 2024 <span class="lang" data-s="鹰眼通" data-t="鷹眼通">鷹眼通</span> HAWKSIGHT DATA INTELLIGENCE CENTER. All Rights Reserved.</p>
         <p class="lang" data-s="免责声明：本平台提供的所有软件及算法推演结果仅供数据分析参考，不构成任何实质性建议。" data-t="免責聲明：本平台提供的所有軟件及算法推演結果僅供數據分析參考，不構成任何實質性建議。">
-            免责声明：本平台提供的所有软件及算法推演结果仅供数据分析参考，不构成任何实质性建议。
+            免責聲明：本平台提供的所有軟件及算法推演結果僅供數據分析參考，不構成任何實質性建議。
         </p>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 1. 初始化设备判断与呼吸灯效果
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
             document.querySelectorAll('.btn-free').forEach(btn => {
@@ -794,14 +765,15 @@
                 });
             }
 
-            // 2. 繁简切换逻辑
+            // ==========================================
+            // 繁简切换逻辑 (默认改为繁体 zh-TW)
+            // ==========================================
             const langToggle = document.getElementById('langToggle');
             const langElements = document.querySelectorAll('.lang');
             
-            // 获取本地存储的语言设置，默认为简体 (zh-CN)
-            let currentLang = localStorage.getItem('hawk_lang') || 'zh-CN';
+            // ⚠️ 注意这里：将默认值改为了 'zh-TW'，并且把 key 加了 _v2 防止缓存冲突
+            let currentLang = localStorage.getItem('hawk_lang_v2') || 'zh-TW';
 
-            // 应用语言
             function applyLanguage(lang) {
                 langElements.forEach(el => {
                     if (lang === 'zh-TW') {
@@ -811,18 +783,13 @@
                     }
                 });
                 
-                // 更新按钮文字
                 langToggle.textContent = lang === 'zh-TW' ? '简体' : '繁體';
-                
-                // 保存设置
-                localStorage.setItem('hawk_lang', lang);
+                localStorage.setItem('hawk_lang_v2', lang);
                 currentLang = lang;
             }
 
-            // 初始化语言
             applyLanguage(currentLang);
 
-            // 点击切换
             langToggle.addEventListener('click', () => {
                 if (currentLang === 'zh-CN') {
                     applyLanguage('zh-TW');
