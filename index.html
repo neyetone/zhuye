@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>黑曜士帶tg客服软件下载中心</title>
+<style>
+    :root {
+        --bg: #050508;          /* 极深黑曜底色 */
+        --surface: #0a0a0f;     /* 卡片底色 */
+        --border: #1f1f27;      /* 暗灰边框 */
+        --text: #f8fafc;        /* 纯白文字 */
+        --dim: #64748b;         /* 暗灰文字 */
+        --blue: #38bdf8;        /* 极客蓝 */
+        --purple: #818cf8;      /* 赛博紫 */
+        --glow: rgba(56, 189, 248, 0.3);
+        --tg-blue: #229ED9;     /* Telegram 官方原色 */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        background-image: 
+            radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.08) 0%, transparent 60%),
+            linear-gradient(0deg, rgba(3,3,5,1) 0%, rgba(10,10,15,0.5) 100%);
+        background-attachment: fixed; 
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    /* 顶部导航 */
+    .header {
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        background: rgba(3, 3, 5, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .logo {
+        font-size: 22px;
+        font-weight: 900;
+        letter-spacing: 4px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .logo svg {
+        width: 30px; height: 30px;
+        filter: drop-shadow(0 0 10px var(--glow));
+    }
+    
+    .logo .en { font-size: 13px; color: var(--blue); letter-spacing: 2px; font-weight: 700; margin-left: 5px;}
+
+    /* 主视觉区 */
+    .hero {
+        text-align: center;
+        padding: 80px 20px 60px;
+        position: relative;
+    }
+    
+    .hero::before {
+        content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 600px; height: 600px; border: 1px dashed rgba(56, 189, 248, 0.1);
+        border-radius: 50%; z-index: -1; pointer-events: none;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        font-weight: 900;
+        letter-spacing: 8px;
+        margin-bottom: 20px;
+        background: linear-gradient(to right, #ffffff, var(--blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 40px var(--glow);
+    }
+    
+    .hero p {
+        color: var(--dim);
+        font-size: 15px;
+        letter-spacing: 3px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+    .hero .line {
+        width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        margin: 30px auto 0;
+    }
+
+    /* 软件矩阵列表 */
+    .container {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 30px;
+        flex: 1;
+    }
+
+    /* 软件卡片 */
+    .app-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+    }
+    
+    .app-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 2px;
+        background: linear-gradient(90deg, transparent, var(--blue), transparent);
+        transition: left 0.6s ease;
+    }
+
+    .app-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 30px rgba(56, 189, 248, 0.05);
+        border-color: rgba(56, 189, 248, 0.4);
+    }
+    .app-card:hover::before { left: 100%; }
+
+    .app-header {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        margin-bottom: 25px;
+    }
+    
+    .app-icon {
+        width: 60px;
+        height: 60px;
+        background: #000;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 900;
+        color: #fff;
+        box-shadow: inset 0 0 15px rgba(56, 189, 248, 0.1), 0 0 15px rgba(56, 189, 248, 0.1);
+        position: relative;
+    }
+    .app-icon::after {
+        content: ''; position: absolute; inset: 5px; border: 1px dashed rgba(56, 189, 248, 0.2); border-radius: 10px;
+    }
+
+    .app-name {
+        font-size: 20px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: 1px;
+    }
+    .app-sub {
+        font-size: 12px;
+        color: var(--purple);
+        font-family: monospace;
+        letter-spacing: 1px;
+    }
+
+    .app-desc {
+        color: var(--dim);
+        font-size: 13px;
+        margin-bottom: 25px;
+        flex-grow: 1;
+        line-height: 1.8;
+    }
+
+    .tags { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+    .tag {
+        font-size: 11px;
+        padding: 4px 12px;
+        border-radius: 4px;
+        background: rgba(56, 189, 248, 0.05);
+        color: var(--blue);
+        border: 1px solid rgba(56, 189, 248, 0.15);
+        font-family: monospace;
+    }
+
+    /* 下载按钮 */
+    .download-group { display: flex; gap: 10px; margin-top: auto; }
+    .btn-dl {
+        flex: 1; text-align: center; text-decoration: none; padding: 12px 0;
+        border-radius: 6px; font-size: 14px; font-weight: 700;
+        display: flex; justify-content: center; align-items: center;
+        transition: all 0.3s; border: 1px solid transparent;
+    }
+    .android-btn {
+        background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: rgba(16, 185, 129, 0.3);
+    }
+    .android-btn:hover { background: #10b981; color: #000; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4); }
+    
+    .pc-btn {
+        background: rgba(56, 189, 248, 0.1); color: var(--blue); border-color: rgba(56, 189, 248, 0.3);
+    }
+    .pc-btn:hover { background: var(--blue); color: #000; box-shadow: 0 0 15px var(--glow); }
+    
+    .btn-disabled {
+        color: var(--dim); border-color: var(--border); background: transparent; cursor: not-allowed;
+    }
+    .btn-disabled:hover { background: transparent; color: var(--dim); box-shadow: none; border-color: var(--border); }
+
+    /* 底部 */
+    .footer {
+        text-align: center; padding: 40px 20px; color: #334155;
+        font-size: 12px; border-top: 1px solid var(--border); margin-top: 80px; font-family: monospace;
+    }
+    .footer p { margin-bottom: 8px; }
+
+    /* ⭐ 浮窗客服样式 ⭐ */
+    .floating-tg {
+        position: fixed;
+        right: 20px;
+        bottom: 30px; 
+        background-color: var(--tg-blue);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 10px 18px 10px 12px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 8px 25px rgba(34, 158, 217, 0.4);
+        z-index: 9999;
+        transition: 0.3s;
+        animation: float 3s ease-in-out infinite;
+    }
+    .floating-tg:active { transform: scale(0.95); }
+    .floating-tg svg {
+        width: 26px; height: 26px; fill: #fff; margin-right: 10px;
+    }
+    .floating-tg span {
+        font-size: 15px; font-weight: 900; letter-spacing: 1px;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(34, 158, 217, 0.6);}
+        100% { transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+        .header { padding: 15px 20px; }
+        .hero h1 { font-size: 32px; letter-spacing: 4px; }
+        .hero p { font-size: 12px; letter-spacing: 2px; }
+        .container { padding: 15px; grid-template-columns: 1fr; }
+        .app-card { clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); }
+        .floating-tg { right: 15px; bottom: 20px; padding: 10px 15px 10px 10px; }
+        .floating-tg span { font-size: 14px; }
+    }
+</style>
+</head>
+<body>
+
+    <!-- ⭐ 浮窗客服 (请替换 href 里的链接) ⭐ -->
+    <a href="https://t.me/onyx668" target="_blank" class="floating-tg" title="点击联系在线客服">
+        <!-- Telegram 原色纸飞机图标 -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+        <span>在线客服服务</span>
+    </a>
+
+    <!-- 顶部导航 -->
+    <header class="header">
+        <div class="logo">
+            <!-- Logo SVG -->
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 6V12C2 17.5 6 21.5 12 23C18 21.5 22 17.5 22 12V6L12 2Z" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M12 2V23" stroke="#38bdf8" stroke-width="1" stroke-linejoin="round" opacity="0.6"/>
+                <path d="M2 6L22 12" stroke="#38bdf8" stroke-width="0.8" stroke-linejoin="round" opacity="0.4"/>
+                <path d="M2 12L22 6" stroke="#38bdf8" stroke-width="0.8" stroke-linejoin="round" opacity="0.4"/>
+                <path d="M6 21L18 21" stroke="#38bdf8" stroke-width="0.8" stroke-linejoin="round" opacity="0.4"/>
+            </svg>
+            黑曜士 <span class="en">ONYX软件下载中心</span>
+        </div>
+    </header>
+
+    <!-- 主视觉 -->
+    <section class="hero">
+        <h1>坚如黑曜<br>守御全局</h1>
+        <p>ONYX QUANT MATRIX DOWNLOAD</p>
+        <div class="line"></div>
+    </section>
+
+    <!-- 软件矩阵列表 -->
+    <div class="container">
+        
+        <!-- 软件卡片 1 -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon">智</div>
+                <div>
+                    <div class="app-name">黑曜士 · 新澳智选库</div>
+                    <div class="app-sub">INTELLIGENCE CORE</div>
+                </div>
+            </div>
+            <div class="app-desc">
+                搭载十大高维算法矩阵分析交叉验证，深度追踪冷热遗漏，完整历史超长周期回测验证功能，数据说话不讲废话。提供多套辅助决策策略。系统坚守"客观中立、历史数据绝不篡改“底线。适配新手、数据采集极客与独立策略研究员。
+            </div>
+            <div class="tags">
+                <span class="tag">强大回测</span>
+                <span class="tag">趋势共振</span>
+                <span class="tag">多维过滤</span>
+            </div>
+            
+            <div class="download-group">
+                <a href="https://wwbki.lanzouv.com/maczxk" class="btn-dl android-btn" class="btn-dl android-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:6px;">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/>
+                    </svg>
+                    安卓下载
+                </a>
+                <a href="https://你的电脑版下载链接.exe" class="btn-dl pc-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:6px;">
+                        <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>
+                    </svg>
+                    电脑下载
+                </a>
+            </div>
+        </div>
+
+        <!-- 软件卡片 2 -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon">防</div>
+                <div>
+                    <div class="app-name">黑曜士 · 智能剥离器</div>
+                    <div class="app-sub">RISK DEFENSE</div>
+                </div>
+            </div>
+            <div class="app-desc">
+                专为杀号剥离打造的防守端核心。内置动态冷却防死循环机制，提供命中率回測。一键启动智能扫描数据分析自动统计剥离属性。包括：杀肖、杀尾、杀半波，杀头数等全维度引擎，帮你剔除一切高危雷区，从而节约成本。
+            </div>
+            <div class="tags">
+                <span class="tag">极寒剥离</span>
+                <span class="tag">动态防重</span>
+                <span class="tag">防守盾舱</span>
+            </div>
+            
+           <!-- 双端下载按钮组 -->
+            <div class="download-group">
+                <!-- 【替换这里】填入真实的 APK 下载链接 -->
+                <a href="https://wwbki.lanzouv.com/boliqi" class="btn-dl android-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:4px;">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/>
+                    </svg>
+                    安卓版下载
+                </a>
+                <!-- 【替换这里】填入真实的 PC 端下载链接 -->
+                <a href="https://你的电脑版下载链接.exe" class="btn-dl pc-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:4px;">
+                        <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>
+                    </svg>
+                    电脑版下载
+                </a>
+            </div>
+        </div>
+
+        <!-- 软件卡片 3 -->
+        <div class="app-card">
+            <div class="app-header">
+                <div class="app-icon">沙</div>
+                <div>
+                    <div class="app-name">黑曜士 · 挑码助手</div>
+                    <div class="app-sub">LOTTERY NUMBER PICKER</div>
+                </div>
+            </div>
+            <div class="app-desc">
+                挑码助手”适用于六合彩（如新奥门六合彩、香港六合彩）的号码属性筛选、生肖/五行/波色统计缩水工具，提供生肖（鼠、牛等）、单双、大小、五行（金木水火土）、波色（红、蓝、绿波）等属性的集合与交集筛选，辅助彩民进行数据统计与分析。
+            </div>
+            <div class="tags">
+                <span class="tag">多维度过滤</span>
+                <span class="tag">支持多属性</span>
+                <span class="tag">免费使用</span>
+            </div>
+            
+            <div class="download-group">
+                <a href="https://wwbki.lanzouv.com/tmzs888"class="btn-dl android-btn" class="btn-dl android-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:6px;">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/>
+                    </svg>
+                    安卓下载
+                </a>
+                <a href="https://你的电脑版下载链接.exe" class="btn-dl pc-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="margin-bottom:-2px; margin-right:6px;">
+                        <path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/>
+                    </svg>
+                    电脑下载
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部声明 -->
+    <footer class="footer">
+        <p>© 2024 黑曜士 ONYX QUANT DATA CENTER. All Rights Reserved.</p>
+        <p>免责声明：本平台提供的所有软件及算法推演结果仅供数据分析参考，不构成任何实质性建议。</p>
+    </footer>
+
+    <!-- 设备识别与按钮高亮 JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if(isMobile) {
+                document.querySelectorAll('.android-btn').forEach(btn => {
+                    btn.style.animation = "pulseGlowGreen 2s infinite";
+                });
+            } else {
+                document.querySelectorAll('.pc-btn').forEach(btn => {
+                    btn.style.animation = "pulseGlowBlue 2s infinite";
+                });
+            }
+        });
+    </script>
+</body>
+</html>
