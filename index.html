@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>鹰眼通 NeyeTone · 六合彩统计分析软件</title>
+<title>鹰眼通neyetone· 六合彩分析统计软件</title>
 <style>
     :root {
         --bg: #0a0b0e;
@@ -12,6 +12,8 @@
         --border: #2a2e37;
         --text: #e2e8f0;
         --dim: #8b949e;
+        
+        /* 核心发光色 */
         --hawk-cyan: #00e5ff;
         --hawk-green: #20e3b2;
         --glow-cyan: rgba(0, 229, 255, 0.2);
@@ -383,9 +385,10 @@
     .is-free .tag { border-color: rgba(32, 227, 178, 0.15); color: var(--hawk-green); }
     .is-vip .tag { border-color: rgba(0, 229, 255, 0.15); color: var(--hawk-cyan); }
 
+    /* 下载按钮区域 */
     .download-group {
         display: flex;
-        gap: 12px;
+        gap: 8px; /* 稍微缩小间距，放下三个按钮 */
         margin-top: auto;
     }
 
@@ -393,40 +396,48 @@
         flex: 1;
         text-align: center;
         text-decoration: none;
-        padding: 14px 0;
-        font-size: 14px;
+        padding: 12px 0;
+        font-size: 13px; /* 稍微缩小字号 */
         font-weight: 700;
-        letter-spacing: 1px;
+        letter-spacing: 0.5px;
         display: flex;
         justify-content: center;
         align-items: center;
         transition: all 0.3s ease;
-        border-radius: 10px;
+        border-radius: 8px;
+        white-space: nowrap;
     }
 
-    .btn-dl svg { margin-right: 8px; }
+    .btn-dl svg { 
+        margin-right: 4px; 
+        width: 14px; 
+        height: 14px; 
+    }
 
-    .btn-free {
+    /* 通用绿色系按钮（免费版使用） */
+    .green-btn {
         background: rgba(32, 227, 178, 0.08);
         color: var(--hawk-green);
-        border: 1px solid rgba(32, 227, 178, 0.3);
+        border: 1px solid rgba(32, 227, 178, 0.25);
     }
-    .btn-free:hover, .btn-free:active {
+    .green-btn:hover, .green-btn:active {
         background: var(--hawk-green);
         color: #000;
-        box-shadow: 0 0 15px var(--glow-green);
+        box-shadow: 0 0 12px var(--glow-green);
     }
 
-    .android-btn {
-        background: rgba(32, 227, 178, 0.05);
-        color: var(--hawk-green);
-        border: 1px solid rgba(32, 227, 178, 0.2);
+    /* 青色系按钮（VIP版安卓用） */
+    .cyan-btn {
+        background: rgba(0, 229, 255, 0.05);
+        color: var(--hawk-cyan);
+        border: 1px solid rgba(0, 229, 255, 0.2);
     }
-    .android-btn:hover {
-        background: rgba(32, 227, 178, 0.15);
-        border-color: var(--hawk-green);
+    .cyan-btn:hover {
+        background: rgba(0, 229, 255, 0.15);
+        border-color: var(--hawk-cyan);
     }
 
+    /* 紫色系按钮（VIP版电脑用，增加区分度） */
     .pc-btn {
         background: rgba(0, 229, 255, 0.05);
         color: var(--hawk-cyan);
@@ -489,13 +500,13 @@
     }
 
     @keyframes pulseGlowGreen {
-        0% { box-shadow: 0 0 0 0 rgba(32, 227, 178, 0.3); }
-        70% { box-shadow: 0 0 0 8px rgba(32, 227, 178, 0); }
+        0% { box-shadow: 0 0 0 0 rgba(32, 227, 178, 0.4); }
+        70% { box-shadow: 0 0 0 6px rgba(32, 227, 178, 0); }
         100% { box-shadow: 0 0 0 0 rgba(32, 227, 178, 0); }
     }
     @keyframes pulseGlowCyan {
-        0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.3); }
-        70% { box-shadow: 0 0 0 8px rgba(0, 229, 255, 0); }
+        0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+        70% { box-shadow: 0 0 0 6px rgba(0, 229, 255, 0); }
         100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
     }
 
@@ -508,6 +519,9 @@
         .container { grid-template-columns: 1fr; padding: 0 16px 30px; gap: 16px; }
         .app-card { padding: 24px 20px; }
         .floating-tg { right: 16px; bottom: 16px; padding: 10px 16px; }
+        
+        .btn-dl { font-size: 12px; }
+        .btn-dl svg { display: none; } /* 手机端为了防挤压，隐藏按钮图标，只留文字 */
     }
 </style>
 </head>
@@ -529,7 +543,7 @@
             </div>
             <div class="logo-text-group">
                 <span class="logo-cn lang" data-s="鹰眼通" data-t="鷹眼通">鷹眼通</span>
-                <span class="logo-en">HAWKSIGHT六合彩統計分析軟件</span>
+                <span class="logo-en">NEYETONE-六合统计分析软件</span>
             </div>
         </div>
 
@@ -538,7 +552,6 @@
                 <span class="dot"></span>
                 SYSTEM ONLINE
             </div>
-            <!-- 繁简切换按钮，默认显示“简体” -->
             <div class="lang-toggle" id="langToggle">简体</div>
         </div>
     </header>
@@ -558,7 +571,7 @@
             <span class="lang" data-s="鹰眼洞察" data-t="鷹眼洞察">鷹眼洞察</span><br>
             <span class="lang" data-s="锁定全局" data-t="鎖定全局">鎖定全局</span>
         </h1>
-        <p>NEYETONE  · PREDICTION MATRIX</p>
+        <p>NEYETONE · PREDICTION MATRIX</p>
     </section>
 
     <!-- 软件矩阵列表 -->
@@ -576,22 +589,32 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智算大底（新奥六合彩）" data-t="鷹眼通 · 智算大底">鷹眼通 · 智算大底</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智算大底" data-t="鷹眼通 · 智算大底">鷹眼通 · 智算大底</span></div>
                     <div class="app-sub">HAWK QUANT BASE</div>
                 </div>
             </div>
-            <div class="app-desc lang" data-s="搭载高维算法矩阵交叉验证，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。" data-t="全息量化推演終端。搭載高維算法矩陣交叉驗證，深度追蹤冷熱遺漏，推演高概率大底與精準趨勢預測模型。">
-                全息量化推演終端。搭載高維算法矩陣交叉驗證，深度追蹤冷熱遺漏，推演高概率大底與精準趨勢預測模型。
+            <div class="app-desc lang" data-s="提供免费资料预测，包括生肖、尾数、大围，ai智能预测，真实历史记录验证，命中率回测，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。不用动脑筋，不用到处找料，一款强大辅助预测实用工具！" data-t="提供免费资料预测，包括生肖、尾数、大围，ai智能预测，真实历史记录验证，命中率回测，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。不用动脑筋，不用到处找料，一款强大辅助预测实用工具！" data-t="提供免费资料预测，包括生肖、尾数、大围，ai智能预测，真实历史记录验证，命中率回测，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。不用动脑筋，不用到处找料，一款强大辅助预测实用工具！">
+               提供免费资料预测，主要生肖、尾数、大包围等。ai智能预测，真实历史、命中率回测验证，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。不用动脑筋，不用到处找资料，适合新手，一款强大辅助预测资料实用工具！">
+               提供免费资料预测，主要生肖、尾数、大包围等。ai智能预测，真实历史、命中率回测验证，深度追踪冷热遗漏，推演高概率大底与精准趋势预测模型。不用动脑筋，不用到处找资料，适合新手，一款强大辅助预测资料实用工具！
             </div>
             <div class="tags">
                 <span class="tag lang" data-s="AI 矩阵" data-t="AI 矩陣">AI 矩陣</span>
-                <span class="tag lang" data-s="趋势共振" data-t="趨勢共振">趨勢共振</span>
+                <span class="tag lang" data-s="趋势共振" data-t="智能预测">智能预测</span>
                 <span class="tag lang" data-s="免费使用" data-t="免費使用">免費使用</span>
             </div>
+            <!-- 免费版：三个下载按钮 -->
             <div class="download-group">
-                <a href="#" class="btn-dl btn-free">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免費一鍵下載</span>
+                <a href="https://wwbki.lanzouv.com/macdadizs" class="btn-dl green-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                    <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
+                </a>
+                <a href="https://mac6free.vercel.app" class="btn-dl green-btn web-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span class="lang" data-s="网页版" data-t="網頁版">網頁版</span>
+                </a>
+                <a href="#" class="btn-dl green-btn pc-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
@@ -612,23 +635,32 @@
                     <div class="app-sub">CODE SCOUT</div>
                 </div>
             </div>
-            <div class="app-desc lang" data-s="专为实战打造的辅助筛选工具。结合矩阵数据与自定义指标，帮您快速在海量号码中过滤筛选圈定目标，一键生成。" data-t="專為實戰打造的輔助篩選工具。結合矩陣數據與自定義指標，幫您快速在海量號碼中精準圈定目標，一鍵生成。">
-                專為實戰打造的輔助篩選工具。結合矩陣數據與自定義指標，幫您快速在海量號碼中精準圈定目標，一鍵生成。
+            <div class="app-desc lang" data-s="專為實戰打造的輔助篩選縮水工具。适用于六合彩（如香港、澳门、台湾彩类）的号码属性筛选、提供肖、单双、大小、五行（金木水火土）、波色（红、蓝、绿波）等属性的集合与交集筛选。" data-t="專為實戰打造的輔助篩選縮水工具。适用于六合彩（如香港、澳门、台湾彩类）的号码属性筛选、提供肖、单双、大小、五行（金木水火土）、波色（红、蓝、绿波）等属性的集合与交集筛选。">
+                專為實戰打造的輔助篩選縮水工具。适用于六合彩（如香港、澳门、台湾彩类）的号码属性筛选、提供肖、单双、大小、五行（金木水火土）、波色（红、蓝、绿波）等属性的集合与交集筛选。
             </div>
             <div class="tags">
                 <span class="tag lang" data-s="一键挑码" data-t="一鍵挑碼">一鍵挑碼</span>
                 <span class="tag lang" data-s="条件过滤" data-t="條件過濾">條件過濾</span>
                 <span class="tag lang" data-s="无限制使用" data-t="無限制使用">無限制使用</span>
             </div>
+            <!-- 免费版：三个下载按钮 -->
             <div class="download-group">
-                <a href="#" class="btn-dl btn-free">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-                    <span class="lang" data-s="免费一键下载" data-t="免費一鍵下載">免費一鍵下載</span>
+                <a href="https://wwbki.lanzouv.com/tmzs01" class="btn-dl green-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                    <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
+                </a>
+                <a href="https://neyetone.github.io/tmzs888" class="btn-dl green-btn web-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span class="lang" data-s="网页版" data-t="網頁版">網頁版</span>
+                </a>
+                <a href="#" class="btn-dl green-btn pc-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
 
-        <!-- 3. 新澳智选库（VIP版） -->
+        <!-- 3. 精英生肖王共振决策（VIP版） -->
         <div class="app-card is-vip">
             <div class="status-badge badge-vip">🔒 VIP</div>
             <div class="app-header">
@@ -640,25 +672,25 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 新澳智选库" data-t="鷹眼通 · 新澳智選庫">鷹眼通 · 新澳智選庫</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 生肖王共振系統(适用香港、澳门、台湾大乐透彩类)" data-t="鹰眼通 · 生肖王共振系統(适用香港、澳门、台湾大乐透彩类)">鹰眼通) · 生肖王共振系統(适用香港、澳门、台湾大乐透彩类)</span></div>
                     <div class="app-sub">SMART LIBRARY</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="主攻各类预.测资料，主流玩.法一应俱全，超庞大的数据源、超全面的数据分析、超多配套工具助手、超长连续期数，对错不改资料，适用于新手玩家、大数据采集玩家、自制资料的各类彩民。" data-t="主攻各类预.测资料，主流玩.法一应俱全，超庞大的数据源、超全面的数据分析、超多配套工具助手、超长连续期数，对错不改资料，适用于新手玩家、大数据采集玩家、自制资料的各类道友。">主攻各类预.测资料，主流玩.法一应俱全，超庞大的数据源、超全面的数据分析、超多配套工具助手、超长连续期数，对错不改资料，适用于新手玩家、大数据采集玩家、自制资料的各类道友。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础功能免费用，解锁高级库需 VIP。" data-t="* 基礎資料免費看，解鎖高級庫需 VIP。">* 基礎資料免費看，解鎖高級庫需 VIP。</span>
+                <span class="lang" data-s="生肖王共振系统是一款基于多模型算法投票的生肖走势量化工具。核心从十二生肖中筛选 6 个目标生肖，采用 System A（热号追踪）、System B（均值回补）、System C（均衡防守）三路独立打分，通过「排名加权投票」机制融合；上层内置四大策略的滚动回测寻优，动态选取近期胜率最优模型输出结果；当最优模型历史胜率低于 50% 阈值时触发反向过滤机制，将未入选生肖组作为推荐输出。支持 30/50/100/300 期多视野切换。" data-t="生肖王共振系统是一款基于多模型投票的生肖走势量化工具。核心从十二生肖中筛选 6 个目标生肖，采用 System A（热号追踪）、System B（均值回补）、System C（均衡防守）三路独立打分，通过「排名加权投票」机制融合；上层内置四大策略的滚动回测寻优，动态选取近期胜率最优模型输出结果；当最优模型历史胜率低于 50% 阈值时触发反向过滤机制，将未入选生肖组作为推荐输出。支持 30/50/100/300 期多视野切换。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* VIP专属享用。" data-t="* VIP专属享用">* VIP专属享用</span>
             </div>
             <div class="tags">
-                <span class="tag lang" data-s="海量数据" data-t="海量數據">海量數據</span>
-                <span class="tag lang" data-s="长期溯源" data-t="長期溯源">長期溯源</span>
+                <span class="tag lang" data-s="智能寻优" data-t="智能寻优">智能尋優</span>
+                <span class="tag lang" data-s="反向防坑" data-t="反向防坑">反向防坑</span>
             </div>
             <div class="download-group">
-                <a href="#" class="btn-dl android-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                <a href="https://wwbki.lanzouv.com/maclxw" class="btn-dl cyan-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
                     <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
                 </a>
                 <a href="#" class="btn-dl pc-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
                     <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
@@ -677,31 +709,67 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智能剥离" data-t="鷹眼通 · 智能剝離">鷹眼通 · 智能剝離</span></div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 智能剥离器（适用香港、澳门、台湾彩类）" data-t="鷹眼通 · 智能剝離器（适用香港、澳门、台湾彩类）">鷹眼通 · 智能剝離器（适用香港、澳門、台灣彩类）</span></div>
                     <div class="app-sub">SMART STRIP</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="专为杀号打造的防守端核心。内置动态冷却防死循环机制，多维度执行高危剥离，剔除死号。" data-t="專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度執行高危剝離，剔除死號。">專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度智能執行高危剝離，剔除死號。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 每日免费体验杀号，解锁三轨交集需 VIP。" data-t="* 每日免費體驗殺號，解鎖三軌交集需 VIP。">* 每日免費體驗殺號，解鎖三軌交集需 VIP。</span>
+                <span class="lang" data-s="专为缩水剥离打造的防守端核心。内置动态冷却防死循环机制，提供命中率回測。一键启动智能扫描数据分析自动统计剥离属性。包括：肖、波、头、尾、门（段）、（五）行、合数等13种参数等全维度引擎，帮你剔除一切高危雷区，从而节约成本。" data-t="专为缩水剥离打造的防守端核心。内置动态冷却防死循环机制，提供命中率回測。一键启动智能扫描数据分析自动统计剥离属性。包括：、肖、波、头、尾、门（段）、（五）行、单双、大小等16种参数全维度引擎，帮你剔除一切高危雷区，从而节约成本。">專為殺號打造的防守端核心。內置動態冷卻防死循環機制，多維度執行高危剝離，剔除死號。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础版有功能限制，解锁三轨交集需 VIP。" data-t="* 每日免費體驗殺號，解鎖三軌交集需 VIP。">* 每日免費體驗殺號，解鎖三軌交集需 VIP。</span>
             </div>
             <div class="tags">
                 <span class="tag lang" data-s="极寒剥离" data-t="極寒剝離">極寒剝離</span>
                 <span class="tag lang" data-s="动态防重" data-t="動態防重">動態防重</span>
             </div>
             <div class="download-group">
-                <a href="#" class="btn-dl android-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                <a href="https://wwbki.lanzouv.com/macblq" class="btn-dl cyan-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
                     <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
                 </a>
                 <a href="#" class="btn-dl pc-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
+                </a>
+            </div>
+        </div>
+         <!-- 5. 超级公式智算师（VIP版） -->
+        <div class="app-card is-vip">
+            <div class="status-badge badge-vip">🔒 VIP</div>
+            <div class="app-header">
+                <div class="app-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                        <circle cx="12" cy="12" r="8" stroke-dasharray="3 3.4"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <path d="M12 4V1.4M12 22.6V20M4 12H1.4M22.6 12H20"/>
+                        <circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 超级公式智算师（适用香港、澳门、台湾彩类）" data-t="鹰眼通 · 超级公式智算师（适用香港、澳门、台湾彩类）">鹰眼通 · 超级公式智算师（适用香港、澳门、台湾彩类）</span></div>
+                    <div class="app-sub">SUPER CALC AI</div>
+                </div>
+            </div>
+            <div class="app-desc">
+                <span class="lang" data-s="内置上百套计算特码、肖、尾、波色等顶尖模型公式，全年固定公式，共振交叉投票，走势混沌时强制拦截，帮你避开连黑烂局。历史数据全盘回测、验证。极智动态寻优：自动对比全量公式近期表现，瞬间跑出【胜率排行榜】选出最强公式套用，谁最稳一眼看穿，数据说话不讲废话。" data-t="内置上百套计算特码、肖、尾、波色等顶尖模型公式，全年固定公式，共振交叉投票，走势混沌时强制拦截，帮你避开连黑烂局。历史数据全盘回测、验证。极智动态寻优：自动对比全量公式近期表现，瞬间跑出【胜率排行榜】选出最强公式套用，谁最稳一眼看穿，数据说话不讲废话。</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础版有功能限制，回测历史高胜率公式需 VIP。" data-t="* 基础版有功能限制，回测历史高胜率公式需 VIP。">* 基础版有功能限制，回测历史高胜率公式需 VIP。</span>
+            </div>
+            <div class="tags">
+                <span class="tag lang" data-s="極寒剝離" data-t="極寒剝離">强制拦截防守</span>
+                <span class="tag lang" data-s="缩水必备" data-t="缩水必备">强制拦截防守</span>
+            </div>
+            <div class="download-group">
+                <a href="https://wwbki.lanzouv.com/mczsds" class="btn-dl cyan-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                    <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
+                </a>
+                <a href="#" class="btn-dl pc-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
                     <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
         </div>
 
-        <!-- 5. 玄学杀号器（VIP版） -->
+        <!-- 6. 玄学杀号排器（VIP版） -->
         <div class="app-card is-vip">
             <div class="status-badge badge-vip">🔒 VIP</div>
             <div class="app-header">
@@ -713,26 +781,25 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 玄学杀号器" data-t="鷹眼通 · 玄學殺號器">鷹眼通 · 玄學殺號器</span></div>
-                    <div class="app-sub">MYSTIC KILLER</div>
+                    <div class="app-name"><span class="lang" data-s="鹰眼通 · 玄学号码缩水工具（适用香港、澳门、台湾彩类-平码五不出+特）" data-t="鹰眼通 · 玄学号码缩水工具（适用香港、澳门、台湾彩类-平码五不出+特）">鹰眼通 · 玄学号码缩水工具（适用香港、澳门、台湾彩类-平码五不出+特）</span></div>
+                    <div class="app-sub">MYSTIC FILTER</div>
                 </div>
             </div>
             <div class="app-desc">
-                <span class="lang" data-s="基于高维时空共振的排雷终端。结合江恩螺旋与洛书飞星，多图智能寻优交叉锁定「共振盲区」。" data-t="基於高維時空共振的剥离杀号終端。結合江恩螺旋與洛書飛星，多圖交叉鎖定「共振盲區」。">基於高維時空共振的杀号缩水終端。結合江恩螺旋與洛書飛星，多圖智能寻优交叉鎖定「共振盲區」。</span><br>
-                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础杀号免费，解锁特码专属防御需 VIP。" data-t="* 基礎殺號免費，解鎖智能寻优專屬防禦需 VIP。">* 基礎殺號免費，解鎖多图智能寻优專屬防禦需 VIP。</span>
+                <span class="lang" data-s="基于高维时空共振的排除缩水工具。结合江恩螺旋与洛书飞星，太极、九宫等多阵法排盘，多图交叉锁定「共振盲区」，历史数据全盘回测、验证。极智动态寻优：自动对比组合近期表现，瞬间跑出【胜率排行榜】选出最强阵法组合套用，谁最稳一眼看穿，数据说话不讲废话。配合共振投票筛选冷号、死号。一款功能强大的排除缩水工具" data-t="基于高维时空共振的排除缩水工具。结合江恩螺旋与洛书飞星，太极、九宫等多阵法排盘，多图交叉锁定「共振盲区」，历史数据全盘回测、验证。极智动态寻优：自动对比组合近期表现，瞬间跑出【胜率排行榜】选出最强阵法组合套用，谁最稳一眼看穿，数据说话不讲废话。配合共振投票筛选冷号、死号。一款功能强大的排除缩水工具">基于高维时空共振的排除缩水工具。结合江恩螺旋与洛书飞星，太极、九宫等多阵法排盘，多图交叉锁定「共振盲区」，历史数据全盘回测、验证。极智动态寻优：自动对比组合近期表现，瞬间跑出【胜率排行榜】选出最强阵法组合套用，谁最稳一眼看穿，数据说话不讲废话。配合共振投票筛选冷号、死号。一款功能强大的排除缩水工具</span><br>
+                <span style="color:var(--hawk-cyan); font-size:12px;" class="lang" data-s="* 基础功能免费，解锁多图智能寻优一键配置参数需 VIP。" data-t="* 基礎功能免費，解鎖智能多图寻优一键配置需 VIP。">* 基礎殺號免費，解鎖智能多圖尋優一鍵配置參數需 VIP。</span>
             </div>
             <div class="tags">
                 <span class="tag lang" data-s="洛书共振" data-t="洛書共振">洛書共振</span>
-                <span class="tag lang" data-s="智能寻优" data-t="智能寻优">智能寻优</span>
-                <span class="tag lang" data-s="多时空交叉" data-t="多时空交叉">多时空交叉</span>
+                <span class="tag lang" data-s="AI多图阵法寻优" data-t="AI多图阵法寻优">AI多图阵法寻优</span>
             </div>
             <div class="download-group">
-                <a href="#" class="btn-dl android-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
+                <a href="https://wwbki.lanzouv.com/xuanxue" class="btn-dl cyan-btn android-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4483-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0001.5511-.4482.9997-.9993.9997zm-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997zm11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.85 12 7.85s-3.5902.3939-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396z"/></svg>
                     <span class="lang" data-s="安卓版" data-t="安卓版">安卓版</span>
                 </a>
                 <a href="#" class="btn-dl pc-btn">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></svg>
                     <span class="lang" data-s="电脑版" data-t="電腦版">電腦版</span>
                 </a>
             </div>
@@ -742,7 +809,7 @@
 
     <!-- 底部声明 -->
     <footer class="footer">
-        <p>© 2024 <span class="lang" data-s="鹰眼通" data-t="鷹眼通">鷹眼通</span> HAWKSIGHT DATA INTELLIGENCE CENTER. All Rights Reserved.</p>
+        <p>© 2026 <span class="lang" data-s="鹰眼通" data-t="鷹眼通">鷹眼通</span> NEYETONE DATA INTELLIGENCE CENTER. All Rights Reserved.</p>
         <p class="lang" data-s="免责声明：本平台提供的所有软件及算法推演结果仅供数据分析参考，不构成任何实质性建议。" data-t="免責聲明：本平台提供的所有軟件及算法推演結果僅供數據分析參考，不構成任何實質性建議。">
             免責聲明：本平台提供的所有軟件及算法推演結果僅供數據分析參考，不構成任何實質性建議。
         </p>
@@ -752,13 +819,21 @@
         document.addEventListener("DOMContentLoaded", function () {
             const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            document.querySelectorAll('.btn-free').forEach(btn => {
-                btn.style.animation = "pulseGlowGreen 2.5s infinite";
-            });
+            // 免费版呼吸灯：手机端亮安卓，电脑端亮电脑
+            if (isMobile) {
+                document.querySelectorAll('.is-free .android-btn').forEach(btn => {
+                    btn.style.animation = "pulseGlowGreen 2.5s infinite";
+                });
+            } else {
+                document.querySelectorAll('.is-free .pc-btn').forEach(btn => {
+                    btn.style.animation = "pulseGlowGreen 2.5s infinite";
+                });
+            }
 
+            // VIP版呼吸灯：手机端亮安卓，电脑端亮电脑
             if (isMobile) {
                 document.querySelectorAll('.is-vip .android-btn').forEach(btn => {
-                    btn.style.animation = "pulseGlowGreen 2.5s infinite";
+                    btn.style.animation = "pulseGlowCyan 2.5s infinite";
                 });
             } else {
                 document.querySelectorAll('.is-vip .pc-btn').forEach(btn => {
@@ -766,13 +841,10 @@
                 });
             }
 
-            // ==========================================
-            // 繁简切换逻辑 (默认改为繁体 zh-TW)
-            // ==========================================
+            // 繁简切换逻辑
             const langToggle = document.getElementById('langToggle');
             const langElements = document.querySelectorAll('.lang');
             
-            // ⚠️ 注意这里：将默认值改为了 'zh-TW'，并且把 key 加了 _v2 防止缓存冲突
             let currentLang = localStorage.getItem('hawk_lang_v2') || 'zh-TW';
 
             function applyLanguage(lang) {
